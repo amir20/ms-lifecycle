@@ -19,3 +19,32 @@
   ignore_errors: yes
   with_items: obsolete_services
   tags: [common]
+
+- name: Debian add fish
+  apt_repository:
+    repo: ppa:fish-shell/release-2
+    update_cache: yes
+    state: present
+  tags: [common, fish]
+
+- name: Fish is present
+  apt:
+    name: fish
+    state: latest
+    force: yes
+  tags: [common, fish]
+
+- name: make fish default
+  user:
+    name: vagrant
+    shell: /usr/bin/fish
+  sudo: yes
+  tags: [common, fish]
+
+- name: htop is present
+  apt:
+    name: htop
+    state: latest
+    force: yes
+  tags: [common, htop]
+  

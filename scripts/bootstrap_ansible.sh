@@ -4,9 +4,11 @@ set -e
 
 echo "Installing Ansible..."
 apt-get install -y software-properties-common
+# apt-add-repository ppa:fish-shell/release-2
 apt-add-repository ppa:ansible/ansible
 apt-get update
 apt-get install -y ansible
+# apt-get install -y fish
 cp /vagrant/ansible/ansible.cfg /etc/ansible/ansible.cfg
 
 #apt-get update -y
