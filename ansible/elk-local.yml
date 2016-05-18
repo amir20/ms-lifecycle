@@ -4,7 +4,6 @@
   roles:
     - common
     - docker
-    - docker-compose
-    - docker-flow
-    - consul-template
-    - registry
+    - elasticsearch
+    - logstash
+    - kibana

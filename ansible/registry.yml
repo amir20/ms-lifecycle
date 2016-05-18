@@ -1,10 +1,7 @@
-- hosts: localhost
+- hosts: registry
   remote_user: vagrant
   serial: 1
   roles:
     - common
     - docker
-    - docker-compose
-    - docker-flow
-    - consul-template
     - registry

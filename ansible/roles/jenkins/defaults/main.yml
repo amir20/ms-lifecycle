@@ -1,5 +1,6 @@
 home: /data/jenkins
 main_job_src: service-workflow-config.xml
+service_redeploy_src: service-redeploy-config.xml
 
 configs: [
   { src: "credentials.xml", dir: "/data/jenkins", file: "credentials.xml", mode: "0777" },
@@ -35,7 +36,7 @@ jobs: [
   }, {
     name: "service-redeploy",
     service_name: "books-ms",
-    src: "service-redeploy-config.xml"
+    src: "{{ service_redeploy_src }}"
   }, {
     name: "books-ms-scale",
     service_name: "books-ms",
@@ -52,6 +53,23 @@ jobs: [
      name: "hardware-notification",
      service_name: "books-ms",
      src: "hardware-notification-config.xml"
+  }, {
+    name: "go-demo-scale",
+    service_name: "go-demo",
+    src: "service-scale-df-config.xml",
+    scale: "+2",
+    time: "45 23 31 12 *"
+  }, {
+    name: "service-scale",
+    service_name: "my-service",
+    src: "service-scale-health-config.xml",
+    scale: "+1",
+  }, {
+    name: "go-demo-descale",
+    service_name: "go-demo",
+    src: "service-scale-df-config.xml",
+    scale: "-2",
+    time: "15 0 2 1 *"
    }
 ]
 
